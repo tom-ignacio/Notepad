@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 
 import bcrypt from "bcrypt";
 
@@ -7,6 +7,7 @@ export interface I_User extends Document {
   name: string;
   lastName: string;
   password: string;
+  noteList: string;
   comparePassword: (password: string) => Promise<boolean>;
 }
 
@@ -32,6 +33,11 @@ const userSchema = new Schema({
     type: String,
     require: true,
   },
+
+  noteList: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "notes"
+  }]
 });
 
 userSchema.pre<I_User>("save", async function (next) {

@@ -1,10 +1,11 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 
 export interface bloc_User extends Document {
   title: string;
   description: string;
   favorite: boolean;
   createDate: Date;
+  owner: string;
 }
 
 const notesSchema = new Schema({
@@ -26,6 +27,12 @@ const notesSchema = new Schema({
   createDate: {
     type: Date,
     default: Date.now()
+  },
+
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    require: true,
   }
 });
 notesSchema.pre<bloc_User>("save", async function (next) {});

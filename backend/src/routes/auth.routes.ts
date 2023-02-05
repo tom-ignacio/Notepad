@@ -14,19 +14,22 @@ import {
   updateNoteById,
   deleteNoteById,
   getNotesByTitle,
+  getNote
 } from "../controller/notes.controller";
 const router = Router();
 
 router.post("/signup", signUp);
-router.get("/signup", getUsers);
-router.get("/signup/:userId", getUsersById);
-router.put("/signup/:userId", updateUserById);
-router.delete("/signup/:userId", deleteUserById);
+
+router.get("/user", getUsers);
+router.get("/user/:userId", getUsersById);
+router.put("/user/:userId", updateUserById);
+router.delete("/user/:userId", deleteUserById);
 
 router.post("/signin", signIn);
 
 router.post("/notepad", notePad);
 router.get("/notepad", getNotes);
+router.get("/notepad/:owner", getNote);
 router.get("/notepadT/:title", getNotesByTitle);
 router.put("/notepad/:noteId", updateNoteById);
 router.delete("/notepad/:noteId", deleteNoteById);
