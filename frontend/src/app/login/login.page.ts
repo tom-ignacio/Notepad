@@ -6,6 +6,8 @@ import {
   FormBuilder
 } from '@angular/forms'
 
+import { LoginService } from './login.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,16 +15,16 @@ import {
 })
 export class LoginPage implements OnInit {
 
-  formularioLogin: FormGroup;
-
-  constructor(public fb: FormBuilder) { 
-    this.formularioLogin = this.fb.group({
-      'username': new FormControl("",Validators.required),
-      'password': new FormControl("",Validators.required)
-    })
+  constructor( private loginService: LoginService) { 
+    
   }
 
   ngOnInit() {
+  }
+
+  sendData() {
+    this.loginService.sendData(username.value, password.value)
+    //.subscribe( res=> console.log(res), err => console.error(err) )
   }
 
 }
