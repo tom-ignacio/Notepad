@@ -1,9 +1,41 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>REGISTER</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <br>
+      <ion-card-subtitle>Enter your credentials</ion-card-subtitle>
+    </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input #username type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input #password type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input #firstName type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input #lastName type="text"></ion-input>
+    </ion-item>
+    <br>
+    <ion-button color="primary" expand="block" >
+      <!-- (click)="sendData(username, password)" -->
+      REGISTER
+    </ion-button>
+  </ion-card-content>
+</ion-card>
 
 </ion-content>

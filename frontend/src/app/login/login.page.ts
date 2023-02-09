@@ -22,8 +22,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  sendData() {
-    this.loginService.sendData(username.value, password.value)
+  sendData(username: any, password: any) {
+    console.log(username.value, password.value)
+    //this.loginService.sendData(username.value, password.value)
     //.subscribe( res=> console.log(res), err => console.error(err) )
   }
 
