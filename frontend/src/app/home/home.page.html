@@ -43,14 +43,17 @@
 
     <ion-grid>
       <ion-row>
-        <ion-col size="6" size-md="2">
+        <ion-col size="12" size-md="2">
 
-          <ion-item>
-            <ion-label>
-              <h1>Titulo nota 1</h1>
-              <p>fecha de creacion</p>
-            </ion-label>
-          </ion-item>
+          <ion-card *ngFor="let note of notes">
+            <ion-card-header>
+              <ion-card-title>{{note.title}}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+              {{note.createDate}}
+            </ion-card-content>
+          </ion-card>
 
         </ion-col>
       </ion-row>
