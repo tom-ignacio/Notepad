@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,7 +22,7 @@ export class RegisterPage implements OnInit {
       password: passwordRegister.value
     }
     this.http.post("http://localhost:3000/signup", registerJSON)
-    .subscribe( (res) => console.log(res) , (err) => console.log(err));
+    .subscribe( (res) => {this.router.navigate(['/login']); console.log(res)}, (err) => console.log(err));
     console.log(registerJSON);
   }
 

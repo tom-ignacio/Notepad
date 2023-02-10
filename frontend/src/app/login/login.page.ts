@@ -6,7 +6,8 @@ import {
   FormBuilder
 } from '@angular/forms'
 
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
+import { Router} from '@angular/router';
 
 import { LoginService } from './login.service';
 
@@ -17,7 +18,7 @@ import { LoginService } from './login.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor( private loginService: LoginService, private http: HttpClient) { 
+  constructor( private loginService: LoginService, private http: HttpClient, private router: Router) { 
     
   }
 
@@ -37,7 +38,7 @@ export class LoginPage implements OnInit {
     };
 
     this.http.post("http://localhost:3000/signin", loginJSON)
-    .subscribe( (res) => console.log(res) , (err) => console.log(err));
+    .subscribe( (res) => this.router.navigate(['/home']) , (err) => console.log(err));
     console.log(loginJSON);
 
     }
