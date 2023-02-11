@@ -83,7 +83,6 @@ export const deleteUserById = async (req: Request, res: Response) => {
 };
 
 export const deleteUserByUsername = async (req: Request, res: Response) => {
-  const { userId } = req.params;
   await User.findOneAndDelete({ username: req.body.username });
   res.status(200).json();
 };
