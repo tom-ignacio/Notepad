@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import User, { I_User } from "../models/user";
 import jwt from "jsonwebtoken";
 import config from "../config/config";
+import passport from "passport";
 
 function createToken(user: I_User) {
   return jwt.sign({ id: user.id, username: user.username }, config.jwtSecret, {
@@ -62,11 +63,28 @@ export const updateUserById = async (req: Request, res: Response) => {
   res.status(200).json(updatedUser);
 };
 
+export const updateUserByUsername = async (req: Request, res: Response) => {
+  const updatedUser = await User.findOneAndUpdate(
+    req.body.username,
+    req.body,
+    {
+      new: true,
+    }
+  );
+  res.status(200).json(updatedUser);
+};
+
 export const deleteUserById = async (req: Request, res: Response) => {
   const { userId } = req.params;
 
   await User.findByIdAndDelete(userId);
 
+  res.status(200).json();
+};
+
+export const deleteUserByUsername = async (req: Request, res: Response) => {
+  const { userId } = req.params;
+  await User.findOneAndDelete({ username: req.body.username });
   res.status(200).json();
 };
 
@@ -91,3 +109,4 @@ export const signIn = async (req: Request, res: Response) => {
     msg: "Invalid username or password",
   });
 };
+

@@ -13,7 +13,6 @@ export const notePad = async (
   }
 
   const newNote = new notes(req.body);
-  //newNote.owner = User.find({_id: req.params._id}).toString();
   await newNote.save();
   return res.status(201).json(newNote);
 };
@@ -35,8 +34,8 @@ export const getNotesByTitle = async (req: Request, res: Response) => {
   res.status(200).json(note);
 };
 //////////////////////////////////////////////////////////////////////////
-export const getNote = async (req: Request, res: Response) => {
-  const note = await notes.find({name: req.params.noteList}).populate("owner");
+export const getNoteByOwner = async (req: Request, res: Response) => {
+  const note = await notes.find({owner: req.params.owner});
   return res.json(note);
 };
 //////////////////////////////////////////////////////////////////////////
