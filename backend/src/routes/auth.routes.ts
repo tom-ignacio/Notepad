@@ -18,6 +18,12 @@ import {
   getNotesByTitle,
   getNoteByOwner
 } from "../controller/notes.controller";
+import {
+  createCategory,
+  getCategories,
+  getCategoryByOwner,
+  deleteCategoryById
+} from "../controller/categories.controller";
 
 const router = Router();
 
@@ -38,5 +44,10 @@ router.get("/notepad/:owner", getNoteByOwner);
 router.get("/notepadT/:title", getNotesByTitle);
 router.put("/notepad/:noteId", updateNoteById);
 router.delete("/notepad/:noteId", deleteNoteById);
+
+router.post("/category", createCategory);
+router.get("/category", getCategories);
+router.get("/category/:owner", getCategoryByOwner);
+router.delete("/category/:categoryId", deleteCategoryById);
 
 export default router;
