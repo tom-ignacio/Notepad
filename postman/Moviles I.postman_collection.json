@@ -167,6 +167,35 @@
 			"response": []
 		},
 		{
+			"name": "updateUserByUsername",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tom\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/userU/tomas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"userU",
+						"tomas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "deleteUserByUsername",
 			"request": {
 				"method": "DELETE",
@@ -459,6 +488,413 @@
 					"path": [
 						"category",
 						"63e814a560c3ec4746b052b3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getNoteByOwner (with JSON Web Token)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkxZWY1ZGFlYzg1MGFhMzM4MjA3NCIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjIyMTUsImV4cCI6MTY3NjgyNzAxNX0.pzqU7pAjKNQVKyL3apz0mLm8qURbnsTVGJJ-W3tEbsI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/notepad/tomas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"notepad",
+						"tomas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getNoteByOwner (without JSON Web Token)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/notepad/tomas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"notepad",
+						"tomas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUserByUsername (with JSON Web Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkxZWY1ZGFlYzg1MGFhMzM4MjA3NCIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjIyMTUsImV4cCI6MTY3NjgyNzAxNX0.pzqU7pAjKNQVKyL3apz0mLm8qURbnsTVGJJ-W3tEbsI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tommy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/user/tomas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"user",
+						"tomas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUserByUsername (with JSON Web Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkyNWNjNTgyZDI2MmRhZWUzMGZmMyIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjQwOTksImV4cCI6MTY3NjgyODg5OX0.F5D0VTQMmVl4kpFO7v0hAB-1Rql2-zn8D1DNrAhwxYM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/user/tomas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"user",
+						"tomas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "notePad (with JSON Web Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkyODYwZGZmZmNiYjBjYTBiNTc3MSIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjQ2MTEsImV4cCI6MTY3NjgyOTQxMX0.fP-gvSD9rIJ38z-vlThahPFZPuMKxqiCSXqjrpPl3Wg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Titulo3\",\r\n    \"description\": \"Una descripcion...\",\r\n    \"owner\": \"tomas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/notepad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"notepad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteNoteById (with JSON Web Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkyODYwZGZmZmNiYjBjYTBiNTc3MSIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjQ2MTEsImV4cCI6MTY3NjgyOTQxMX0.fP-gvSD9rIJ38z-vlThahPFZPuMKxqiCSXqjrpPl3Wg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Titulo3\",\r\n    \"description\": \"Una descripcion...\",\r\n    \"owner\": \"tomas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/notepad/63e92be37b8a35a0897bfa49",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"notepad",
+						"63e92be37b8a35a0897bfa49"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateNoteById (with JSON Web Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkyODYwZGZmZmNiYjBjYTBiNTc3MSIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjQ2MTEsImV4cCI6MTY3NjgyOTQxMX0.fP-gvSD9rIJ38z-vlThahPFZPuMKxqiCSXqjrpPl3Wg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"favorite\": true,\r\n    \"description\": \"Una descripcion bien buena...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/notepad/63e92bc87b8a35a0897bfa46",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"notepad",
+						"63e92bc87b8a35a0897bfa46"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCategory (with JSON Web Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkyODYwZGZmZmNiYjBjYTBiNTc3MSIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjQ2MTEsImV4cCI6MTY3NjgyOTQxMX0.fP-gvSD9rIJ38z-vlThahPFZPuMKxqiCSXqjrpPl3Wg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"Sports\",\r\n    \"owner\": \"tomas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCategoriesByOwner (with JSON Web Token)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkyODYwZGZmZmNiYjBjYTBiNTc3MSIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjQ2MTEsImV4cCI6MTY3NjgyOTQxMX0.fP-gvSD9rIJ38z-vlThahPFZPuMKxqiCSXqjrpPl3Wg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/category/tomas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"category",
+						"tomas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCategoryById (with JSON Web Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTkyODYwZGZmZmNiYjBjYTBiNTc3MSIsInVzZXJuYW1lIjoidG9tYXMiLCJpYXQiOjE2NzYyMjQ2MTEsImV4cCI6MTY3NjgyOTQxMX0.fP-gvSD9rIJ38z-vlThahPFZPuMKxqiCSXqjrpPl3Wg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/category/63e92d59698569f69347defb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"category",
+						"63e92d59698569f69347defb"
 					]
 				}
 			},
