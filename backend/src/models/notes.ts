@@ -6,6 +6,7 @@ export interface bloc_User extends Document {
   favorite: boolean;
   createDate: Date;
   owner: string;
+  category: string;
 }
 
 const notesSchema = new Schema({
@@ -30,6 +31,11 @@ const notesSchema = new Schema({
   },
 
   owner: {
+    type: String,
+    require: true,
+  },
+
+  category: {
     type: String,
     require: true,
   }

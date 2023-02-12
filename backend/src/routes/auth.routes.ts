@@ -3,6 +3,7 @@ import {
   signIn,
   signUp,
   getUsers,
+  getUserByUsername,
   getUsersById,
   updateUserById,
   updateUserByUsername,
@@ -30,11 +31,11 @@ const router = Router();
 router.post("/signup", signUp);
 
 router.get("/user", getUsers);
-router.get("/user/:userId", getUsersById);
+router.get("/user/:username", getUserByUsername);
 router.put("/user/:userId", updateUserById);
-router.put("/userU/:userId", updateUserByUsername);
+router.put("/userU/:username", updateUserByUsername);
 router.delete("/user/:userId", deleteUserById);
-router.delete("/userU/:userId", deleteUserByUsername);
+router.delete("/userU/:username", deleteUserByUsername);
 
 router.post("/signin", signIn);
 

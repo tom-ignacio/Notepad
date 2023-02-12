@@ -47,8 +47,8 @@ export const getUsersById = async (req: Request, res: Response) => {
   res.status(200).json(user);
 };
 
-export const getUser = async (req: Request, res: Response) => {
-  const user = await User.find();
+export const getUserByUsername = async (req: Request, res: Response) => {
+  const user = await User.find({username: req.params.username});
   return res.json(user);
 };
 
@@ -64,13 +64,7 @@ export const updateUserById = async (req: Request, res: Response) => {
 };
 
 export const updateUserByUsername = async (req: Request, res: Response) => {
-  const updatedUser = await User.findOneAndUpdate(
-    req.body.username,
-    req.body,
-    {
-      new: true,
-    }
-  );
+  const updatedUser = await User.findOneAndUpdate({username: req.params.username}, req.body, { new: true, });
   res.status(200).json(updatedUser);
 };
 
@@ -83,7 +77,7 @@ export const deleteUserById = async (req: Request, res: Response) => {
 };
 
 export const deleteUserByUsername = async (req: Request, res: Response) => {
-  await User.findOneAndDelete({ username: req.body.username });
+  await User.findOneAndDelete({username: req.params.username});
   res.status(200).json();
 };
 
