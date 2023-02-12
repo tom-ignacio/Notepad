@@ -38,8 +38,15 @@ export class LoginPage implements OnInit {
     };
 
     this.http.post("http://localhost:3000/signin", loginJSON)
-    .subscribe( (res) => this.router.navigate(['/home']) , (err) => console.log(err));
-    console.log(loginJSON);
+    .subscribe( (res) => {
+      
+      localStorage.setItem("token", JSON.stringify(res));
+      //console.log(localStorage.getItem("token"));
+      this.router.navigate(['/home']);
+    
+    }
+       , (err) => console.log(err));
+
 
     }
 

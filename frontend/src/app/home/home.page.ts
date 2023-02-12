@@ -14,7 +14,8 @@ export class HomePage implements OnInit {
 
   loadNotes(){
     this.http.get("http://localhost:3000/notepad")
-    .subscribe(res => this.notes = res , err => console.log(err))
+    .subscribe(res => this.notes = res , err => console.log(err));
+
   }
 
   ngOnInit() {
@@ -24,5 +25,10 @@ export class HomePage implements OnInit {
   ionViewWillEnter(){
     this.loadNotes();
   }
+
+  logOut(){
+    localStorage.clear();
+  }
+
 
 }
