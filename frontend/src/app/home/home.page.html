@@ -29,7 +29,7 @@
 
     <br>
     <div>
-      <ion-button color="danger" (click)="logOut" routerLink="/login">LogOut</ion-button>
+      <ion-button color="danger" (click)="logOut()">LogOut</ion-button>
     </div>
     
 
@@ -49,9 +49,8 @@
 
     <ion-grid>
       <ion-row>
-        <ion-col size="6" size-md="2">
-
-          <ion-card *ngFor="let note of notes">
+        <ion-col  *ngFor="let note of notes" size="6" size-md="2">
+          <ion-card>
             <ion-card-header>
               <ion-card-title>{{note.title}}</ion-card-title>
             </ion-card-header>

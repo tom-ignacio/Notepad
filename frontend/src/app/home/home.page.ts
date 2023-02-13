@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {AlertController} from '@ionic/angular';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ export class HomePage implements OnInit {
 
   notes: any = []
 
-  constructor(private http : HttpClient) {}
+  constructor(private http : HttpClient, private alertController : AlertController, private router : Router) {}
 
   loadNotes(){
     this.http.get("http://localhost:3000/notepad")
@@ -26,8 +28,24 @@ export class HomePage implements OnInit {
     this.loadNotes();
   }
 
-  logOut(){
-    localStorage.clear();
+  async logOut(){
+
+    const alert =  await this.alertController.create({
+      header: 'LogOut',
+      message: 'Are you sure you want to log out?',
+      buttons: [{
+        text: 'Yes',
+        handler: () => {
+         localStorage.clear();
+         this.router.navigate(['/login']);
+        }
+
+      }, 'No']
+    });
+
+      await alert.present();
+
+
   }
 
 
