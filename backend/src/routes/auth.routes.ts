@@ -42,6 +42,7 @@ router.post("/signin", signIn);
 router.post("/notepad", notePad);
 router.get("/notepad", getNotes);
 router.get("/notepad/:owner", getNoteByOwner);
+router.get("/notepadI/:noteId", getNotesById);
 router.get("/notepadT/:title", getNotesByTitle);
 router.put("/notepad/:noteId", updateNoteById);
 router.delete("/notepad/:noteId", deleteNoteById);
