@@ -8,6 +8,9 @@ import { Router} from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+
+
 export class HomePage implements OnInit {
 
   notes: any = []
@@ -15,8 +18,9 @@ export class HomePage implements OnInit {
   constructor(private http : HttpClient, private alertController : AlertController, private router : Router) {}
 
   loadNotes(){
-    this.http.get("http://localhost:3000/notepad")
-    .subscribe(res => this.notes = res , err => console.log(err));
+    let user = localStorage.getItem('User');
+    this.http.get('http://localhost:3000/notepad/' +  user)
+    .subscribe(res => this.notes = res, err => console.log(err));
 
   }
 

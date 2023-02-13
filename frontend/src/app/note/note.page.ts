@@ -19,6 +19,8 @@ export class NotePage implements OnInit {
    // owner : localStorage.getItem('user')
   }
 
+user = localStorage.getItem('User')
+
   constructor(private http : HttpClient, private router: Router, private activateRoute: ActivatedRoute, private alertController: AlertController) { }
 
 
@@ -41,10 +43,11 @@ export class NotePage implements OnInit {
 
   sendDataNote() {
 
+
     let noteJSON = {
       title: this.thisNote.title,
-      description: this.thisNote.description
-      //owner: 
+      description: this.thisNote.description,
+      owner: this.user
     }
 
     this.http.post("http://localhost:3000/notepad", noteJSON)

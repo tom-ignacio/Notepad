@@ -34,8 +34,8 @@ export class LoginPage implements OnInit {
     .subscribe( (res) => {
       localStorage.setItem("User", JSON.stringify(loginJSON.username));
       localStorage.setItem("token", JSON.stringify(res));
-      console.log(localStorage.getItem("User"));
-      //this.router.navigate(['/home']);
+      //console.log(localStorage.getItem("User"));
+      this.router.navigate(['/home']);
     
     }
        , (err) => console.log(err));
