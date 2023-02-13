@@ -44,9 +44,10 @@ export class HomePage implements OnInit {
     });
 
       await alert.present();
-
-
   }
 
+  verNota(id : string){
+    console.log(id);
+  }
 
 }

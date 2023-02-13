@@ -8,35 +8,40 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <br>
-      <ion-card-subtitle>a new note starts</ion-card-subtitle>
-    </ion-card-header>
-  <ion-card-content>
-    <ion-item>
-      <ion-label position="floating">Tittle</ion-label>
-      <ion-input #noteTitle type="text"></ion-input>
-    </ion-item>
 
-    <!--<ion-item>
-      <ion-label position="floating">description</ion-label>
-      <ion-input #noteDescription type="text"></ion-input>
-    </ion-item> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="4" offset-md="4">
 
-    <ion-item>
-      <ion-textarea placeholder="Type something here" [autoGrow]="true" #description></ion-textarea>
-    </ion-item>
-    
-    <br>
-    <ion-button color="success" size="default" (click)="sendDataNote(noteTitle, description)">
-      SAVE
-    </ion-button>
-    <ion-button color="danger" size="default" >
-      DELETE
-    </ion-button>
+        <ion-card>
+          <ion-card-header>
+            <br>
+            <ion-card-subtitle>a new note starts</ion-card-subtitle>
+          </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Tittle</ion-label>
+            <ion-input #noteTitle type="text"></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-textarea placeholder="Type something here" [autoGrow]="true" #description></ion-textarea>
+          </ion-item>
+          
+          <br>
+          <ion-button color="success" size="default" (click)="sendDataNote(noteTitle, description)">
+            SAVE
+          </ion-button>
+          <ion-button color="danger" size="default" >
+            DELETE
+          </ion-button>
+        </ion-card-content>
 
-  </ion-card-content>
-</ion-card>
+      </ion-card>
+
+      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

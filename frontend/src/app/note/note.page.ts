@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-note',
@@ -9,9 +9,14 @@ import {Router} from '@angular/router';
 })
 export class NotePage implements OnInit {
 
-  constructor(private http : HttpClient, private router: Router) { }
+  constructor(private http : HttpClient, private router: Router, private activateRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activateRoute.paramMap.subscribe((paramMap) => {
+      if (paramMap.get('id')) {
+        console.log("editing");
+      }
+    })
   }
 
 
