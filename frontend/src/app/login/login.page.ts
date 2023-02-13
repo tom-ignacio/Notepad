@@ -8,7 +8,6 @@ import {
 
 import {HttpClient} from '@angular/common/http';
 import { Router} from '@angular/router';
-
 import { LoginService } from './login.service';
 
 @Component({
@@ -25,12 +24,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  /*sendData(username: any, password: any) {
-    //console.log(username.value, password.value)
-    this.loginService.sendData(username.value, password.value)
-    //.subscribe( res=> console.log(res), err => console.error(err) )
-  } */
-
   sendData(  username: any, password: any) {
     let loginJSON = {
       username: username.value,
@@ -39,10 +32,10 @@ export class LoginPage implements OnInit {
 
     this.http.post("http://localhost:3000/signin", loginJSON)
     .subscribe( (res) => {
-      
+      localStorage.setItem("User", JSON.stringify(loginJSON.username));
       localStorage.setItem("token", JSON.stringify(res));
-      //console.log(localStorage.getItem("token"));
-      this.router.navigate(['/home']);
+      console.log(localStorage.getItem("User"));
+      //this.router.navigate(['/home']);
     
     }
        , (err) => console.log(err));
