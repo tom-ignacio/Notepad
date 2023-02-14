@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'note/edit/:id',
     loadChildren: () => import('./note/note.module').then( m => m.NotePageModule)
   },
+  {
+    path: 'profile/:username',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
 ];
 
 @NgModule({

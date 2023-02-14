@@ -51,8 +51,8 @@ user = localStorage.getItem('User')
     }
 
     this.http.post("http://localhost:3000/notepad", noteJSON)
-    .subscribe( (res) => {this.router.navigate(['/home']); console.log(res)}, (err) => console.log(err));
-    console.log(noteJSON);
+    .subscribe( (res) => {this.router.navigate(['/home'])}, (err) => console.log(err));
+    //console.log(noteJSON);
 
   }
 

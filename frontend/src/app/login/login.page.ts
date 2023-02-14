@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
 
     this.http.post("http://localhost:3000/signin", loginJSON)
     .subscribe( (res) => {
-      localStorage.setItem("User", JSON.stringify(loginJSON.username));
+      localStorage.setItem("User", (loginJSON.username));
       localStorage.setItem("token", JSON.stringify(res));
       //console.log(localStorage.getItem("User"));
       this.router.navigate(['/home']);
