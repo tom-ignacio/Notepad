@@ -35,6 +35,14 @@ const routes: Routes = [
     path: 'profile/:username',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
+  {
+    path: 'categories',
+    loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesPageModule)
+  },
+  {
+    path: 'create-categorie',
+    loadChildren: () => import('./create-categorie/create-categorie.module').then( m => m.CreateCategoriePageModule)
+  },
 ];
 
 @NgModule({
