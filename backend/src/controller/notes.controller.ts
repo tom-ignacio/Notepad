@@ -57,3 +57,13 @@ export const deleteNoteById = async (req: Request, res: Response) => {
 
   res.status(200).json();
 };
+
+export const getNotesByOwnerAndCategory = async (req: Request, res: Response) => {
+  const Notes = await notes.find({owner: req.params.owner, category: req.params.category});
+  return res.json(Notes);
+};
+
+export const getNotesByOwnerAndFavorite = async (req: Request, res: Response) => {
+  const Notes = await notes.find({owner: req.params.owner, favorite: true});
+  return res.json(Notes);
+};

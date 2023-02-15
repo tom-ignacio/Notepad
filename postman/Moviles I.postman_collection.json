@@ -899,6 +899,71 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "getNotesByOwnerAndCategory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Titulo2\",\r\n    \"description\": \"Una descripcion2...\",\r\n    \"owner\": \"tomas\",\r\n    \"category\": \"music\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/notepadC/tomas/music",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notepadC",
+						"tomas",
+						"music"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getNotesByOwnerAndFavorite",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/notepadF/tomas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notepadF",
+						"tomas"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

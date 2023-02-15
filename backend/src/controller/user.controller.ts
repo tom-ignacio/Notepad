@@ -3,6 +3,8 @@ import User, { I_User } from "../models/user";
 import jwt from "jsonwebtoken";
 import config from "../config/config";
 import passport from "passport";
+import notes from "../models/notes";
+import Categories from "../models/categories";
 
 function createToken(user: I_User) {
   return jwt.sign({ id: user.id, username: user.username }, config.jwtSecret, {
@@ -48,7 +50,8 @@ export const getUsersById = async (req: Request, res: Response) => {
 };
 
 export const getUserByUsername = async (req: Request, res: Response) => {
-  const user = await User.find({username: req.params.username});
+ // const user = await User.find({username: req.params.username});
+  const user = await notes.find({owner: req.params.username});
   return res.json(user);
 };
 
@@ -78,6 +81,8 @@ export const deleteUserById = async (req: Request, res: Response) => {
 
 export const deleteUserByUsername = async (req: Request, res: Response) => {
   await User.findOneAndDelete({username: req.params.username});
+  await notes.deleteMany({owner: req.params.username});  
+  await Categories.deleteMany({owner: req.params.username});  
   res.status(200).json();
 };
 

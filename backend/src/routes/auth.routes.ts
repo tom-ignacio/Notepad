@@ -17,7 +17,9 @@ import {
   updateNoteById,
   deleteNoteById,
   getNotesByTitle,
-  getNoteByOwner
+  getNoteByOwner,
+  getNotesByOwnerAndCategory,
+  getNotesByOwnerAndFavorite
 } from "../controller/notes.controller";
 import {
   createCategory,
@@ -44,6 +46,8 @@ router.get("/notepad", getNotes);
 router.get("/notepad/:owner", getNoteByOwner);
 router.get("/notepadI/:noteId", getNotesById);
 router.get("/notepadT/:title", getNotesByTitle);
+router.get("/notepadC/:owner/:category", getNotesByOwnerAndCategory);
+router.get("/notepadF/:owner", getNotesByOwnerAndFavorite);
 router.put("/notepad/:noteId", updateNoteById);
 router.delete("/notepad/:noteId", deleteNoteById);
 
