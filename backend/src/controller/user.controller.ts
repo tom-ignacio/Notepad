@@ -50,8 +50,8 @@ export const getUsersById = async (req: Request, res: Response) => {
 };
 
 export const getUserByUsername = async (req: Request, res: Response) => {
- // const user = await User.find({username: req.params.username});
-  const user = await notes.find({owner: req.params.username});
+ const user = await User.find({username: req.params.username});
+  //const user = await notes.find({owner: req.params.username});
   return res.json(user);
 };
 

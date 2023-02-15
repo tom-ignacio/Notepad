@@ -33,7 +33,7 @@ export class ProfilePage implements OnInit {
 
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/user/' +  this.user)
+   this.http.get('http://localhost:3000/user/' +  this.user)
     .subscribe(res => {
       this.userProfile = res;
       this.dataProfile = this.userProfile[0];
@@ -43,6 +43,7 @@ export class ProfilePage implements OnInit {
 
   updateProfile() {
     let updateProfileJSON = {
+      username: this.dataProfile.username,
       lastName: this.dataProfile.lastName,
       name: this.dataProfile.name,
       password: this.dataProfile.password,

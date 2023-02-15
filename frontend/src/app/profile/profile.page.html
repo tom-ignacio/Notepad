@@ -39,9 +39,10 @@
 
               <ion-item>
                 <ion-label position="stacked">Password</ion-label>
-                <ion-input [clearInput]="true" [(ngModel)]="dataProfile.password" type="password"></ion-input>
+                <ion-input  [(ngModel)]="dataProfile.password" type="password" [disabled]="true"></ion-input>
               </ion-item>
-        
+              <!--[clearInput]="true"-->
+
               <br>
               <ion-button color="success" size="default" (click)="updateProfile()">
                 UPDATE
