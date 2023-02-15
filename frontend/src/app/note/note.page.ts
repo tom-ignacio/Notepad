@@ -74,7 +74,7 @@ user = localStorage.getItem('User')
     if (this.editing == true) {
       const alert =  await this.alertController.create({
         header: 'Delete this note',
-        message: 'Are you sure you want to log out?',
+        message: 'Are you sure you want to delete this note?',
         buttons: [{
           text: 'Yes',
           handler: () => {
