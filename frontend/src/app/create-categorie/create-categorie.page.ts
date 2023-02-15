@@ -20,7 +20,7 @@ export class CreateCategoriePage implements OnInit {
   createCategorie(titleCateg : any) {
 
     let categorieJSON = {
-      title: titleCateg,
+      category: titleCateg.value,
       owner: this.user
     }
 

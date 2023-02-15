@@ -18,19 +18,40 @@ export class ProfilePage implements OnInit {
     _id: ''
   }
 
+  dataProfile: any = {
+    lastName: '',
+    name: '',
+    password: '',
+    username: '',
+    _id: ''
+  }
+
   user = localStorage.getItem('User')
 
   constructor(private http : HttpClient, private alertController : AlertController, private router : Router) { }
 
-  getProfile() {
-    //console.log(user)
-    this.http.get('http://localhost:3000/user/' +  this.user)
-    .subscribe(res => this.userProfile = res /*console.log(res)*/ , err => console.log(err))
-    console.log(this.userProfile);
-  }
+
 
   ngOnInit() {
-    this.getProfile();
+    this.http.get('http://localhost:3000/user/' +  this.user)
+    .subscribe(res => {
+      this.userProfile = res;
+      this.dataProfile = this.userProfile[0];
+    }  , err => console.log(err))
+
+  }
+
+  updateProfile() {
+    let updateProfileJSON = {
+      lastName: this.dataProfile.lastName,
+      name: this.dataProfile.name,
+      password: this.dataProfile.password,
+    }
+
+    this.http.put('http://localhost:3000/userU/' +  this.user, updateProfileJSON )
+    .subscribe( (res) => console.log("guardado exitoso"), (err) => console.log(err));
+
+
   }
 
   async deleteUser(){
