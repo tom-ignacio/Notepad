@@ -48,4 +48,21 @@ export class CategoriesPage implements OnInit {
       await alert.present();
   }
 
+  async deleteCategorie(id: any){
+    const alert =  await this.alertController.create({
+        header: 'Delete this categorie',
+        message: 'Are you sure you want to delete this categorie?',
+        buttons: [{
+          text: 'Yes',
+          handler: () => {
+            this.http.delete('http://localhost:3000/category/' + id)
+            .subscribe( (res) => this.router.navigate(['/categories']) , (err) => console.log(err));
+          }
+  
+        }, 'No']
+      });
+      await alert.present();
+    }
+
+
 }
