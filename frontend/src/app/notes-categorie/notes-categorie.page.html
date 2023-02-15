@@ -20,6 +20,13 @@
       <ion-label >Profile</ion-label>
     </ion-item>
 
+    <ion-item routerLink="/categories">
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXIJroOtdP6tANQEegee-Ifn9u0jBTTYCnlxEpUW-lbKgADC0DFAE4RZ3aqFKaAlmDxbc&usqp=CAU" />
+      </ion-avatar>
+      <ion-label>Categories</ion-label>
+    </ion-item>
+
     <ion-item routerLink="/note">
       <ion-avatar slot="start">
         <img alt="Silhouette of a person's head" src="https://cdn-icons-png.flaticon.com/512/234/234678.png" />
@@ -42,26 +49,24 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Categories</ion-title>
+      <ion-title>Notes by categorie</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding"> <!--ACA EMPIEZA EL CONTENIDO DE LA PAGINA-->
 
   <ion-grid>
     <ion-row>
-      <ion-col  *ngFor="let categorie of categories" size="6" size-md="2" >
-        <ion-card [routerLink]="['/', 'notes-categorie', 'notesByCategorie', categorie._id]">
+      <ion-col   size="6" size-md="2" >
+        <!--*ngFor="let categorie of categories"-->
+        <ion-card>
           <!-- [routerLink]="['/', 'note', 'edit', note._id]" -->
           <ion-card-header>
-            <ion-card-title class="ion-text-center">{{categorie.category}}</ion-card-title>
+            <ion-card-title class="ion-text-center"> titulo de nota</ion-card-title>
           </ion-card-header>
         
           <ion-card-content>
-            created by: {{categorie.owner}}
+
           </ion-card-content>
-          <ion-button color="danger" size="default" (click)="deleteCategorie(categorie._id)" expand="full">
-            DELETE
-          </ion-button>
         </ion-card>
 
       </ion-col>
@@ -71,7 +76,7 @@
 
       <!--BOTON AGREGAR UNA CATEGORIA-->
       <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-        <ion-fab-button routerLink="/create-categorie">
+        <ion-fab-button routerLink="/note">
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
       </ion-fab>

@@ -43,6 +43,14 @@ const routes: Routes = [
     path: 'create-categorie',
     loadChildren: () => import('./create-categorie/create-categorie.module').then( m => m.CreateCategoriePageModule)
   },
+  {
+    path: 'notes-categorie',
+    loadChildren: () => import('./notes-categorie/notes-categorie.module').then( m => m.NotesCategoriePageModule)
+  },
+  {
+    path: 'notes-categorie/notesByCategorie/:idCat',
+    loadChildren: () => import('./notes-categorie/notes-categorie.module').then( m => m.NotesCategoriePageModule)
+  },
 ];
 
 @NgModule({
