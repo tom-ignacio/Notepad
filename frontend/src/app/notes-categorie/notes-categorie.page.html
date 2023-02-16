@@ -1,54 +1,11 @@
-<ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding"> <!--CONTENIDO DEL MENU-->
-    
-    <ion-item routerLink="/home">
-      <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdACt6JONjOzXem4mf6WerKEwiKAQhM1MVdw&usqp=CAU" />
-      </ion-avatar>
-      <ion-label>Home</ion-label>
-    </ion-item>
-   
-    <ion-item routerLink="/profile">
-      <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
-      <ion-label >Profile</ion-label>
-    </ion-item>
-
-    <ion-item routerLink="/categories">
-      <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXIJroOtdP6tANQEegee-Ifn9u0jBTTYCnlxEpUW-lbKgADC0DFAE4RZ3aqFKaAlmDxbc&usqp=CAU" />
-      </ion-avatar>
-      <ion-label>Categories</ion-label>
-    </ion-item>
-
-    <ion-item routerLink="/note">
-      <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="https://cdn-icons-png.flaticon.com/512/234/234678.png" />
-      </ion-avatar>
-      <ion-label>Create a new note</ion-label>
-    </ion-item>
-
-    <br>
-    <div>
-      <ion-button color="danger" (click)="logOut()">LogOut</ion-button>
-    </div>
-    
-
-
-  </ion-content>  <!--ACA TERMINA EL CONTENIDO DEL MENU-->
-</ion-menu>
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar color="primary">
+
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-back-button defaultHref="/categories"></ion-back-button>
       </ion-buttons>
+
       <ion-title>Notes by categorie</ion-title>
     </ion-toolbar>
   </ion-header>

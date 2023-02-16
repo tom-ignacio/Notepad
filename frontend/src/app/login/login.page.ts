@@ -30,6 +30,8 @@ export class LoginPage implements OnInit {
     url: ''
   }
 
+  user = localStorage.getItem('User')
+
   constructor( private loginService: LoginService, private http: HttpClient, private router: Router, private alertController : AlertController) { 
     
   }

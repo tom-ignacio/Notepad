@@ -8,6 +8,8 @@
 </ion-header>
 
 <ion-content>
+
+  <ng-container *ngIf="!user">
   <ion-card>
     <ion-card-header>
       <br>
@@ -36,5 +38,19 @@
     </ion-button>
   </ion-card-content>
 </ion-card>
+</ng-container>
+
+<ng-container *ngIf="user">
+  <ion-card>
+    <ion-card-header>
+      <br>
+      <h1 class="ion-text-center">You already have a session</h1>
+    </ion-card-header>
+  <br><br>
+  <ion-button color="primary" expand="full" routerLink="/home">
+    Back to home
+  </ion-button>
+</ion-card>
+</ng-container>
 
 </ion-content>
