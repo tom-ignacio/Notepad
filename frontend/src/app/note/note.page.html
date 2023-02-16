@@ -29,15 +29,28 @@
             <ion-label position="floating">Description</ion-label>
             <ion-textarea placeholder="Type something here" [autoGrow]="true" [(ngModel)]="thisNote.description"></ion-textarea>
           </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Categorie</ion-label>
+            <ion-select interface="action-sheet" [(ngModel)]="thisNote.category">
+              <ion-select-option *ngFor="let categorie of categories" value="{{categorie.category}}" >
+                {{categorie.category}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
           
 
           <br>
          <ion-button color="success" size="default" (click)="editing ? updateNote() : sendDataNote()">
             {{editing ? 'UPDATE' : 'SAVE'}}
           </ion-button>
-          <ion-button color="danger" size="default" (click)="deleteNote()">
-            DELETE
-          </ion-button>
+          
+          <ng-container *ngIf="editing">
+            <ion-button color="danger" size="default" (click)="deleteNote()">
+              DELETE
+            </ion-button>
+          </ng-container>
+
 
 
         </ion-card-content>

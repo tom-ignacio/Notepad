@@ -50,7 +50,7 @@
   <ion-grid>
     <ion-row>
       <ion-col  *ngFor="let categorie of categories" size="6" size-md="2" >
-        <ion-card [routerLink]="['/', 'notes-categorie', 'notesByCategorie', categorie._id]">
+        <ion-card [routerLink]="['/', 'notes-categorie', 'notesByCategorie', categorie.category]">
           <!-- [routerLink]="['/', 'note', 'edit', note._id]" -->
           <ion-card-header>
             <ion-card-title class="ion-text-center">{{categorie.category}}</ion-card-title>

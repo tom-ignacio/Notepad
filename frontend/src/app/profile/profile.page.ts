@@ -26,6 +26,17 @@ export class ProfilePage implements OnInit {
     _id: ''
   }
 
+  errorHandler = {
+    error: '',
+    headers: '',
+    message: '',
+    name: '',
+    ok: '',
+    status: '',
+    statusText: '',
+    url: ''
+  }
+
   user = localStorage.getItem('User')
 
   constructor(private http : HttpClient, private alertController : AlertController, private router : Router) { }
@@ -37,7 +48,17 @@ export class ProfilePage implements OnInit {
     .subscribe(res => {
       this.userProfile = res;
       this.dataProfile = this.userProfile[0];
-    }  , err => console.log(err))
+    }  , async err => {
+      this.errorHandler = err;
+      let msg = JSON.stringify(this.errorHandler.error);
+      const alert =  await this.alertController.create({
+        header: 'Error',
+        message: msg,
+        buttons: ['try again']
+      });
+  
+        await alert.present();
+    })
 
   }
 
@@ -50,7 +71,25 @@ export class ProfilePage implements OnInit {
     }
 
     this.http.put('http://localhost:3000/userU/' +  this.user, updateProfileJSON )
-    .subscribe( (res) => console.log("guardado exitoso"), (err) => console.log(err));
+    .subscribe( async (res) => {
+      const alert =  await this.alertController.create({
+        header: 'Update',
+        message: 'your changes were successfully saved',
+        buttons: ['okay']
+      });
+  
+        await alert.present();
+    }, async (err) => {
+      this.errorHandler = err;
+      let msg = JSON.stringify(this.errorHandler.error);
+      const alert =  await this.alertController.create({
+        header: 'Error',
+        message: msg,
+        buttons: ['try again']
+      });
+  
+        await alert.present();
+    });
 
 
   }
@@ -66,7 +105,17 @@ export class ProfilePage implements OnInit {
             .subscribe( (res) => {
               localStorage.clear();
               this.router.navigate(['/login']);
-            } , (err) => console.log(err));
+            } , async (err) => {
+              this.errorHandler = err;
+              let msg = JSON.stringify(this.errorHandler.error);
+              const alert =  await this.alertController.create({
+                header: 'Error',
+                message: msg,
+                buttons: ['try again']
+              });
+          
+                await alert.present();
+            });
           }
   
         }, 'No']

@@ -11,6 +11,17 @@ import {AlertController} from '@ionic/angular';
 export class CreateCategoriePage implements OnInit {
 
   user = localStorage.getItem('User')
+  
+  errorHandler = {
+    error: '',
+    headers: '',
+    message: '',
+    name: '',
+    ok: '',
+    status: '',
+    statusText: '',
+    url: ''
+  }
 
   constructor(private http : HttpClient, private router: Router, private activateRoute: ActivatedRoute, private alertController: AlertController) { }
 
@@ -25,8 +36,17 @@ export class CreateCategoriePage implements OnInit {
     }
 
     this.http.post("http://localhost:3000/category", categorieJSON)
-    .subscribe( (res) => {this.router.navigate(['/categories'])}, (err) => console.log(err));
-    console.log(categorieJSON);
+    .subscribe( (res) => {this.router.navigate(['/categories'])}, async (err) => {
+      this.errorHandler = err;
+      let msg = JSON.stringify(this.errorHandler.error);
+      const alert =  await this.alertController.create({
+        header: 'Error',
+        message: msg,
+        buttons: ['try again']
+      });
+  
+        await alert.present();
+    });
 
   }
 

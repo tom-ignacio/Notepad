@@ -10,15 +10,38 @@ import {AlertController} from '@ionic/angular';
 })
 export class NotesCategoriePage implements OnInit {
 
+  notesCategorie: any = []
+
   user = localStorage.getItem('User')
+
+  errorHandler = {
+    error: '',
+    headers: '',
+    message: '',
+    name: '',
+    ok: '',
+    status: '',
+    statusText: '',
+    url: ''
+  }
 
   constructor(private http : HttpClient, private router: Router, private activateRoute: ActivatedRoute, private alertController: AlertController) { }
 
   ngOnInit() {
     this.activateRoute.paramMap.subscribe((paramMap) => {
       let idCategorie = paramMap.get('idCat');
-      console.log('http://localhost:3000/notepadC/' + this.user + '/' + idCategorie)
-      //this.http.get()
+      this.http.get('http://localhost:3000/notepadC/' + this.user + '/' + idCategorie)
+      .subscribe( (res) => this.notesCategorie = res , async (err) => {
+        this.errorHandler = err;
+        let msg = JSON.stringify(this.errorHandler.error);
+        const alert =  await this.alertController.create({
+          header: 'Error',
+          message: msg,
+          buttons: ['try again']
+        });
+    
+          await alert.present();
+      });
 
   })
   }

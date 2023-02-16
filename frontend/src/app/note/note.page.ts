@@ -15,8 +15,21 @@ export class NotePage implements OnInit {
   thisNote : any = {
     _id: '',
     title: '',
-    description: ''
-   // owner : localStorage.getItem('user')
+    description: '',
+    category: 'uncategorized'
+  }
+
+  categories: any = []
+
+  errorHandler = {
+    error: '',
+    headers: '',
+    message: '',
+    name: '',
+    ok: '',
+    status: '',
+    statusText: '',
+    url: ''
   }
 
 user = localStorage.getItem('User')
@@ -38,6 +51,18 @@ user = localStorage.getItem('User')
 
       }
     })
+    this.http.get('http://localhost:3000/category/' + this.user )
+    .subscribe(res => this.categories = res, async err => {
+      this.errorHandler = err;
+      let msg = JSON.stringify(this.errorHandler.error);
+      const alert =  await this.alertController.create({
+        header: 'Error',
+        message: msg,
+        buttons: ['try again']
+      });
+  
+        await alert.present();
+    });
   }
 
 
@@ -47,12 +72,23 @@ user = localStorage.getItem('User')
     let noteJSON = {
       title: this.thisNote.title,
       description: this.thisNote.description,
-      owner: this.user
+      owner: this.user,
+      category:  this.thisNote.category
+
     }
 
     this.http.post("http://localhost:3000/notepad", noteJSON)
-    .subscribe( (res) => {this.router.navigate(['/home'])}, (err) => console.log(err));
-    //console.log(noteJSON);
+    .subscribe( (res) => this.router.navigate(['/home']), async (err) => {
+      this.errorHandler = err;
+      let msg = JSON.stringify(this.errorHandler.error);
+      const alert =  await this.alertController.create({
+        header: 'Error',
+        message: msg,
+        buttons: ['try again']
+      });
+  
+        await alert.present();
+    });
 
   }
 
@@ -60,18 +96,26 @@ user = localStorage.getItem('User')
     
     let noteJSON = {
       title: this.thisNote.title,
-      description: this.thisNote.description
-      //owner: 
+      description: this.thisNote.description,
+      category:  this.thisNote.category
     }
 
     this.http.put('http://localhost:3000/notepad/' + this.thisNote._id, noteJSON)
-    .subscribe( (res) => {this.router.navigate(['/home']); console.log(res)}, (err) => console.log(err));
-    console.log(noteJSON);
+    .subscribe( (res) => this.router.navigate(['/home']), async (err) => {
+      this.errorHandler = err;
+      let msg = JSON.stringify(this.errorHandler.error);
+      const alert =  await this.alertController.create({
+        header: 'Error',
+        message: msg,
+        buttons: ['try again']
+      });
+  
+        await alert.present();
+    });
 
   }
 
   async deleteNote(){
-    if (this.editing == true) {
       const alert =  await this.alertController.create({
         header: 'Delete this note',
         message: 'Are you sure you want to delete this note?',
@@ -84,18 +128,7 @@ user = localStorage.getItem('User')
   
         }, 'No']
       });
-      await alert.present();
-    } else {
-      const alert =  await this.alertController.create({
-        header: 'Action not required',
-        message: 'You cannot delete this note because it is not yet created. Press "okay" to continue.',
-        buttons: ['okay']
-      });
-      await alert.present();
-    }
-    
-
-      
+      await alert.present();   
   }
 
   

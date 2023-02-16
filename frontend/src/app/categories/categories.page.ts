@@ -13,12 +13,33 @@ export class CategoriesPage implements OnInit {
 
   categories: any = []
 
+  errorHandler = {
+    error: '',
+    headers: '',
+    message: '',
+    name: '',
+    ok: '',
+    status: '',
+    statusText: '',
+    url: ''
+  }
+
   constructor(private http : HttpClient, private alertController : AlertController, private router : Router) { }
 
   loadCategories(){
     let user = localStorage.getItem('User');
     this.http.get('http://localhost:3000/category/' + user )
-    .subscribe(res => this.categories = res, err => console.log(err));
+    .subscribe(res => this.categories = res, async err => {
+      this.errorHandler = err;
+      let msg = JSON.stringify(this.errorHandler.error);
+      const alert =  await this.alertController.create({
+        header: 'Error',
+        message: msg,
+        buttons: ['try again']
+      });
+  
+        await alert.present();
+    });
 
   }
 
@@ -56,7 +77,17 @@ export class CategoriesPage implements OnInit {
           text: 'Yes',
           handler: () => {
             this.http.delete('http://localhost:3000/category/' + id)
-            .subscribe( (res) => this.router.navigate(['/categories']) , (err) => console.log(err));
+            .subscribe( (res) => this.router.navigate(['/categories']) , async (err) => {
+              this.errorHandler = err;
+              let msg = JSON.stringify(this.errorHandler.error);
+              const alert =  await this.alertController.create({
+                header: 'Error',
+                message: msg,
+                buttons: ['try again']
+              });
+          
+                await alert.present();
+            });
           }
   
         }, 'No']
