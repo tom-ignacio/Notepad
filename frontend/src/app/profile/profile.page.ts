@@ -44,7 +44,7 @@ export class ProfilePage implements OnInit {
 
 
   ngOnInit() {
-   this.http.get('http://localhost:3000/user/' +  this.user)
+   this.http.get('https://backend-notepad-production.up.railway.app/user/' +  this.user)
     .subscribe(res => {
       this.userProfile = res;
       this.dataProfile = this.userProfile[0];
@@ -70,7 +70,7 @@ export class ProfilePage implements OnInit {
       password: this.dataProfile.password,
     }
 
-    this.http.put('http://localhost:3000/userU/' +  this.user, updateProfileJSON )
+    this.http.put('https://backend-notepad-production.up.railway.app/userU/' +  this.user, updateProfileJSON )
     .subscribe( async (res) => {
       const alert =  await this.alertController.create({
         header: 'Update',
@@ -101,7 +101,7 @@ export class ProfilePage implements OnInit {
         buttons: [{
           text: 'Yes',
           handler: () => {
-            this.http.delete('http://localhost:3000/userU/' +  this.user)
+            this.http.delete('https://backend-notepad-production.up.railway.app/userU/' +  this.user)
             .subscribe( (res) => {
               localStorage.clear();
               this.router.navigate(['/login']);

@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
 
   loadNotes(){
     let user = localStorage.getItem('User');
-    this.http.get('http://localhost:3000/notepad/' +  user)
+    this.http.get('https://backend-notepad-production.up.railway.app/notepad/' +  user)
     .subscribe(res => this.notes = res, async err => {
       this.errorHandler = err;
       let msg = JSON.stringify(this.errorHandler.error);

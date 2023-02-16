@@ -35,7 +35,7 @@ export class CreateCategoriePage implements OnInit {
       owner: this.user
     }
 
-    this.http.post("http://localhost:3000/category", categorieJSON)
+    this.http.post("https://backend-notepad-production.up.railway.app/category", categorieJSON)
     .subscribe( (res) => {this.router.navigate(['/categories'])}, async (err) => {
       this.errorHandler = err;
       let msg = JSON.stringify(this.errorHandler.error);

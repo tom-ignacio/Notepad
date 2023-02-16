@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
       password: password.value
     };
 
-    this.http.post("http://localhost:3000/signin", loginJSON)
+    this.http.post("https://backend-notepad-production.up.railway.app/signin", loginJSON)
     .subscribe( (res) => {
       localStorage.setItem("User", (loginJSON.username));
       localStorage.setItem("token", JSON.stringify(res));

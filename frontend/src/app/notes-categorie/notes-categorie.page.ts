@@ -27,10 +27,10 @@ export class NotesCategoriePage implements OnInit {
 
   constructor(private http : HttpClient, private router: Router, private activateRoute: ActivatedRoute, private alertController: AlertController) { }
 
-  ngOnInit() {
+  loadNotesByCategorie() {
     this.activateRoute.paramMap.subscribe((paramMap) => {
       let idCategorie = paramMap.get('idCat');
-      this.http.get('http://localhost:3000/notepadC/' + this.user + '/' + idCategorie)
+      this.http.get('https://backend-notepad-production.up.railway.app/notepadC/' + this.user + '/' + idCategorie)
       .subscribe( (res) => this.notesCategorie = res , async (err) => {
         this.errorHandler = err;
         let msg = JSON.stringify(this.errorHandler.error);
@@ -44,6 +44,14 @@ export class NotesCategoriePage implements OnInit {
       });
 
   })
+  }
+
+  ngOnInit() {
+    this.loadNotesByCategorie();
+  }
+
+  ionViewWillEnter(){
+    this.loadNotesByCategorie();
   }
 
 

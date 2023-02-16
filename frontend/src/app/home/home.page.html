@@ -52,11 +52,13 @@
         <ion-col  *ngFor="let note of notes" size="6" size-md="2" >
           <ion-card [routerLink]="['/', 'note', 'edit', note._id]">
             <ion-card-header>
-              <ion-card-title>{{note.title}}</ion-card-title>
+              <h5>{{note.title}}</h5>
             </ion-card-header>
           
             <ion-card-content>
-              {{note.createDate}}
+              <h6>
+                {{note.createDate}}
+              </h6>
             </ion-card-content>
           </ion-card>
 

@@ -28,7 +28,7 @@ export class CategoriesPage implements OnInit {
 
   loadCategories(){
     let user = localStorage.getItem('User');
-    this.http.get('http://localhost:3000/category/' + user )
+    this.http.get('https://backend-notepad-production.up.railway.app/category/' + user )
     .subscribe(res => this.categories = res, async err => {
       this.errorHandler = err;
       let msg = JSON.stringify(this.errorHandler.error);
@@ -76,7 +76,7 @@ export class CategoriesPage implements OnInit {
         buttons: [{
           text: 'Yes',
           handler: () => {
-            this.http.delete('http://localhost:3000/category/' + id)
+            this.http.delete('https://backend-notepad-production.up.railway.app/category/' + id)
             .subscribe( (res) => this.router.navigate(['/categories']) , async (err) => {
               this.errorHandler = err;
               let msg = JSON.stringify(this.errorHandler.error);

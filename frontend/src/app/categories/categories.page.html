@@ -53,11 +53,13 @@
         <ion-card [routerLink]="['/', 'notes-categorie', 'notesByCategorie', categorie.category]">
           <!-- [routerLink]="['/', 'note', 'edit', note._id]" -->
           <ion-card-header>
-            <ion-card-title class="ion-text-center">{{categorie.category}}</ion-card-title>
+            <h5>{{categorie.category}}</h5>
           </ion-card-header>
         
           <ion-card-content>
-            created by: {{categorie.owner}}
+            <h6>
+              created by: {{categorie.owner}}
+            </h6>
           </ion-card-content>
           <ion-button color="danger" size="default" (click)="deleteCategorie(categorie._id)" expand="full">
             DELETE

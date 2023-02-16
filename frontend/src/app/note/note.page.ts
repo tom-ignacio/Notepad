@@ -16,7 +16,7 @@ export class NotePage implements OnInit {
     _id: '',
     title: '',
     description: '',
-    category: 'uncategorized'
+    category: 'default'
   }
 
   categories: any = []
@@ -43,15 +43,14 @@ user = localStorage.getItem('User')
       let idNote = paramMap.get('id')
       if (idNote) {
         this.editing = true;
-        this.http.get('http://localhost:3000/notepadI/' + idNote)
+        this.http.get('https://backend-notepad-production.up.railway.app/notepadI/' + idNote)
         .subscribe(res => {
           this.thisNote = res;
-          console.log(this.thisNote);
         })
 
       }
     })
-    this.http.get('http://localhost:3000/category/' + this.user )
+    this.http.get('https://backend-notepad-production.up.railway.app/category/' + this.user )
     .subscribe(res => this.categories = res, async err => {
       this.errorHandler = err;
       let msg = JSON.stringify(this.errorHandler.error);
@@ -77,7 +76,7 @@ user = localStorage.getItem('User')
 
     }
 
-    this.http.post("http://localhost:3000/notepad", noteJSON)
+    this.http.post("https://backend-notepad-production.up.railway.app/notepad", noteJSON)
     .subscribe( (res) => this.router.navigate(['/home']), async (err) => {
       this.errorHandler = err;
       let msg = JSON.stringify(this.errorHandler.error);
@@ -100,7 +99,7 @@ user = localStorage.getItem('User')
       category:  this.thisNote.category
     }
 
-    this.http.put('http://localhost:3000/notepad/' + this.thisNote._id, noteJSON)
+    this.http.put('https://backend-notepad-production.up.railway.app/notepad/' + this.thisNote._id, noteJSON)
     .subscribe( (res) => this.router.navigate(['/home']), async (err) => {
       this.errorHandler = err;
       let msg = JSON.stringify(this.errorHandler.error);
@@ -122,7 +121,7 @@ user = localStorage.getItem('User')
         buttons: [{
           text: 'Yes',
           handler: () => {
-            this.http.delete('http://localhost:3000/notepad/' + this.thisNote._id)
+            this.http.delete('https://backend-notepad-production.up.railway.app/notepad/' + this.thisNote._id)
             .subscribe( (res) => this.router.navigate(['/home']) , (err) => console.log(err));
           }
   

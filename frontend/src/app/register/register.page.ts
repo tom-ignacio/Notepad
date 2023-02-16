@@ -37,13 +37,13 @@ export class RegisterPage implements OnInit {
     }
     
     let categorieJSON = {
-      category: 'uncategorized',
+      category: 'default',
       owner: usernameRegister.value
     }
 
-    this.http.post("http://localhost:3000/signup", registerJSON)
+    this.http.post("https://backend-notepad-production.up.railway.app/signup", registerJSON)
     .subscribe( (res) => {
-      this.http.post("http://localhost:3000/category", categorieJSON)
+      this.http.post("https://backend-notepad-production.up.railway.app/category", categorieJSON)
       .subscribe((res) => this.router.navigate(['/login']) , async (err) =>{
         this.errorHandler = err;
         let msg = JSON.stringify(this.errorHandler.error);
